@@ -1,4 +1,4 @@
-const container: HTMLElement | any = document.getElementById("app")
+const container_1: HTMLElement | any = document.getElementById("app")
 const pokemons: number = 10
 
 interface IPokemon {
@@ -8,6 +8,7 @@ interface IPokemon {
   type: string
 }
 
+//function below just create id numbers, which are received in getPokemon function
 const fetchData = (): void => { //void means that function does not return anything
   for (let i = 1; i <= pokemons; i++) {
     getPokemon(i)
@@ -16,6 +17,7 @@ const fetchData = (): void => { //void means that function does not return anyth
 
 const getPokemon = async (id: number): Promise<void> => {
   const data: Response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  console.log(data)
   const pokemon: any = await data.json()
   const pokemonType: string = pokemon.types
     .map((poke: any) => poke.type.name)
@@ -40,7 +42,7 @@ const showPokemon = (pokemon: IPokemon): void => {
             <span class="card--details">${pokemon.type}</span>
         </div>
     `
-  container.innerHTML += output
+  container_1.innerHTML += output //create new HTML elements
 }
 
 fetchData()

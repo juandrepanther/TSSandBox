@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,14 +34,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var container = document.getElementById("app");
+var _this = this;
+var container_1 = document.getElementById("app");
 var pokemons = 10;
+//function below just create id numbers, which are received in getPokemon function
 var fetchData = function () {
     for (var i = 1; i <= pokemons; i++) {
         getPokemon(i);
     }
 };
-var getPokemon = function (id) { return __awaiter(void 0, void 0, void 0, function () {
+var getPokemon = function (id) { return __awaiter(_this, void 0, void 0, function () {
     var data, pokemon, pokemonType, transformedPokemon;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -52,6 +53,7 @@ var getPokemon = function (id) { return __awaiter(void 0, void 0, void 0, functi
                 return [4 /*yield*/, data.json()];
             case 2:
                 pokemon = _a.sent();
+                console.log(pokemon);
                 pokemonType = pokemon.types
                     .map(function (poke) { return poke.type.name; })
                     .join(", ");
@@ -59,7 +61,7 @@ var getPokemon = function (id) { return __awaiter(void 0, void 0, void 0, functi
                     id: pokemon.id,
                     name: pokemon.name,
                     image: "" + pokemon.sprites.front_default,
-                    type: pokemonType,
+                    type: pokemonType
                 };
                 showPokemon(transformedPokemon);
                 return [2 /*return*/];
@@ -68,6 +70,6 @@ var getPokemon = function (id) { return __awaiter(void 0, void 0, void 0, functi
 }); };
 var showPokemon = function (pokemon) {
     var output = "\n        <div class=\"card\">\n            <span class=\"card--id\">#" + pokemon.id + "</span>\n            <img class=\"card--image\" src=" + pokemon.image + " alt=" + pokemon.name + " />\n            <h1 class=\"card--name\">" + pokemon.name + "</h1>\n            <span class=\"card--details\">" + pokemon.type + "</span>\n        </div>\n    ";
-    container.innerHTML += output;
+    container_1.innerHTML += output; //create new HTML elements
 };
 fetchData();
