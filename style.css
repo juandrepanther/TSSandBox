@@ -23,6 +23,12 @@ body {
  display: flex;
  flex-direction: column;
  align-items: center;
+ cursor: pointer;
+}
+
+.card:hover {
+ background-color: rgb(238, 238, 238);
+ border-color: transparent;
 }
 
 .card--name {
